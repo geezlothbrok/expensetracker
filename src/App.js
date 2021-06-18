@@ -12,22 +12,9 @@ class App extends Component {
     }
   }
 
-  
-
   addExpenses =(expense) => {
-     expense.id = 1000 + Math.random() * 100000;
     this.setState({expensesData: [...this.state.expensesData, expense]})
-
   }
- 
-  
-  deleteExpenses = (id) =>{
-    let expenseInfo = this.state.expensesData.filter((expense) => expense.id !== id);
-    this.setState({
-      expensesData: expenseInfo
-    })
-  }
-
   render(){
   return (
     <div>
@@ -43,7 +30,7 @@ class App extends Component {
           <div className="col-md-8">
             <h3 className='expense_head'>Expenses</h3>
 
-            <ExpensesToMap expensesData={this.state.expensesData} deleteExpenses={this.deleteExpenses}/>
+            <ExpensesToMap expensesData={this.state.expensesData} />
           </div>
         </div>
       </div>

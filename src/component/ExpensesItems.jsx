@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import EditExpenses from '../component/EditExpenses';
+import EditExpenses from './EditExpenses';
 import { Modal } from 'react-bootstrap';
 
 export default class ExpensesItems extends Component {
@@ -7,25 +7,19 @@ export default class ExpensesItems extends Component {
         super(props)
         this.state = {
             show: false
-        }
+        };
     }
 
-
-    handleDelete = (event) => {
-        event.preventDefault();
-        this.props.deleteExpenses(this.props.expense.id)
+    handleDelete = () => {
+        this.props.deleteExpenses(this.props.expense.id);
     }
 
     closeModal = () => {
-        this.setState(
-            { show: false }
-        )
+        this.setState({ show: false })
     }
 
     showModal = () => {
-        this.setState(
-            { show: true }
-        )
+        this.setState({ show: true })
     }
 
     render() {
@@ -47,8 +41,9 @@ export default class ExpensesItems extends Component {
 
 
                         <div className='col-md-4'><span><h1></h1></span>
-                            <button className='delete' type='button' onClick={this.handleDelete}>Delete</button>
-
+                            <button className='delete' type='button' onClick={() => {
+                                this.props.deleteExpensesAction(this.props.expense.id)
+                            }}>Delete</button>
                             <button className='edit' type='button' onClick={this.showModal}>Edit</button>
                         </div>
 
@@ -59,15 +54,13 @@ export default class ExpensesItems extends Component {
                 <div>
                     <Modal show={this.state.show} onHide={this.closeModal}>
                         <Modal.Header closeButton>
-                            <Modal.Title>Edit Expenses</Modal.Title>
+                            <Modal.Title>Edit Expense</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                             <EditExpenses expense={this.props.expense} closeModal={this.closeModal} />
                         </Modal.Body>
                     </Modal>
-
                 </div>
-
             </div>
         )
     }

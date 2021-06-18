@@ -1,15 +1,23 @@
-import React, { Component } from 'react'
-import ExpensesItems from './ExpensesItems'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import ExpensesItems from './ExpensesItems';
 
-export default class ExpensesToMap extends Component {
-    render() {
-        
+function ExpensesToMap (props) {
+       
         return (
             <div>
-                {this.props.expensesData.map((expense)=>{
-                    return <ExpensesItems expense={expense} deleteExpenses = {this.props.deleteExpenses} />
+                {props.expensesData.map((expense)=>{
+                    return <ExpensesItems expense={expense} deleteExpenses = {props.deleteExpenses} />
                 })}
             </div>
         )
-    }
+    
 }
+
+function mapStateToProps(state) {
+    return {
+        expensesData: state.expensesData,
+  };
+}
+
+export default connect(mapStateToProps, {})(ExpensesToMap);

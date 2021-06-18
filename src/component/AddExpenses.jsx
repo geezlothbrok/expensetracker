@@ -21,8 +21,11 @@ class AddExpenses extends Component {
     }
 
     handleSubmit = () => {
+        let expenseId = 10000 + Math.random() * 1000000;
+        let expense = {...this.state, id: expenseId};
         
-        this.props.addExpenses(this.state)
+        this.props.addExpensesAction(expense);
+
     }
     render() {
         return (
@@ -63,4 +66,4 @@ class AddExpenses extends Component {
     }
 }
 
-export default connect(null, { addExpensesAction })(AddExpenses)
+export default connect(null, { addExpensesAction })(AddExpenses);

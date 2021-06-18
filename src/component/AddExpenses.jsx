@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import {addExpensesAction} from '../actions/expenseAction';
 
-export default class AddExpenses extends Component {
+
+class AddExpenses extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -18,7 +21,8 @@ export default class AddExpenses extends Component {
     }
 
     handleSubmit = () => {
-        this.props.addExpenses(this.state);
+        
+        this.props.addExpenses(this.state)
     }
     render() {
         return (
@@ -58,3 +62,5 @@ export default class AddExpenses extends Component {
         )
     }
 }
+
+export default connect(null, { addExpensesAction })(AddExpenses)

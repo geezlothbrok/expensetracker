@@ -9,7 +9,7 @@ export default function (state= initialState, action) {
 
         case 'DELETE_EXPENSE':
             var id= action.payload;
-            let expensesAfterDelete = state.expensesData.filter((expense)=> expense.id !== id);
+            let expensesAfterDelete = state.expensesData.filter((expense)=> expense.id !==id);
             return { expensesData: expensesAfterDelete};
 
         

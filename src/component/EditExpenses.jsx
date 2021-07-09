@@ -20,7 +20,7 @@ class EditExpenses extends Component {
     }
 
     handleSubmit = () => {
-        this.props.addExpenses(this.state);
+        this.props.updatedExpenseAction(this.state);
     }
     render() {
         return (

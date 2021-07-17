@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { getAllExpenses } from '../actions/expenseAction';
 import ExpensesItems from './ExpensesItems';
+
 
 function ExpensesToMap (props) {
        
@@ -20,4 +22,8 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {})(ExpensesToMap);
+const mapDispatchToProps = {
+    getAllExpenses,
+  };
+
+export default connect(mapStateToProps, mapDispatchToProps)(ExpensesToMap);

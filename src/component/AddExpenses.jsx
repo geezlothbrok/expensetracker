@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import {addExpensesAction} from '../actions/expenseAction';
+import {addNewExpenses} from '../actions/expenseAction';
 
 
 class AddExpenses extends Component {
@@ -66,4 +66,4 @@ class AddExpenses extends Component {
     }
 }
 
-export default connect(null, { addExpensesAction })(AddExpenses);
+export default connect(null, { addNewExpenses })(AddExpenses);

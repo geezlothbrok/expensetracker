@@ -1,8 +1,12 @@
 import AddExpenses from "../component/AddExpenses";
 import { Component } from "react";
 import ExpensesToMap from "../component/ExpensesToMap";
+import { connect } from "react-redux";
+import { logout } from "../actions/authActions";
 
-class App extends Component {
+
+
+class Dashboard extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -12,6 +16,10 @@ class App extends Component {
 
   addExpenses =(expense) => {
     this.setState({expensesData: [...this.state.expensesData, expense]})
+  }
+
+  handleLogout = () => {
+    this.props.logout();
   }
   render(){
   return (
@@ -24,6 +32,7 @@ class App extends Component {
 
             <AddExpenses addExpenses={this.addExpenses}/>
           </div>
+          <button type='button' onClick={this.props.handleLogout}>Logout</button>
 
           <div className="col-md-8">
             <h3 className='expense_head'>Expenses</h3>
@@ -36,4 +45,6 @@ class App extends Component {
   );
 }
 }
-export default App;
+
+const mapDispatchToProps = { logout };
+export default connect(null, mapDispatchToProps) (Dashboard);

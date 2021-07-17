@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updatedExpenseAction } from '../actions/expenseAction';
+import { editExpense } from '../actions/expenseAction';
 
 class EditExpenses extends Component {
     constructor(props) {
@@ -62,7 +62,7 @@ class EditExpenses extends Component {
 }
 
 let mapDispatchToProps = {
-    updatedExpenseAction,
+    editExpense,
 };
 
 let mapStateToProps = () => {};
